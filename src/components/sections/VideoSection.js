@@ -5,7 +5,7 @@ const Video = ({ videoSrcURL, videoTitle }) => (
     <iframe
       width="600"
       height="600"
-      src={videoSrcURL}
+      src={videoSrcURL.toString()}
       title={videoTitle}
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
       frameBorder="0"

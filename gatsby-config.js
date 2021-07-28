@@ -4,9 +4,9 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Robolution Homepage`,
+    description: `This is Robolution's homepage`,
+    author: `@bowen`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -21,16 +21,18 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
-    {
-      resolve: `gatsby-source-graphql`,
-      options: {
-        typeName: `GitHub`,
-        fieldName: `github`,
-        url: `https://api.github.com/graphql`,
-        headers: {
-          Authorization: `Bearer your-github-token`,
-        },
-      },
-    },
   ],
 }
+
+// {
+//   resolve: `gatsby-source-graphql`,
+//   options: {
+//     typeName: `Event`,
+//     fieldName: `keller`,
+//     url: `http://192.168.1.68:8002/event/keller`,
+//     headers: {
+//       accept: "application/json",
+//       "Content-Type": "application/json",
+//     },
+//   },
+// },

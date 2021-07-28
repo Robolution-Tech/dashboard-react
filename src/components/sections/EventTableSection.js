@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import styled from "styled-components"
 import { eventData } from "../../testData/sampleData"
 import SectionRow from "./SectionRow"
@@ -7,17 +7,42 @@ import { VideoContext } from "../../context/UserVideoContext"
 import { themes } from "../styles/ColorStyles"
 import { H1 } from "../styles/TextStyles"
 
+import {
+  ResponsiveContainer,
+  AreaChart,
+  XAxis,
+  YAxis,
+  Area,
+  Tooltip,
+  CartesianGrid,
+} from "recharts"
+import { format, parseISO, subDays } from "date-fns"
+
 export default function EventSection() {
   const { videoChosen } = useContext(VideoContext)
+  const [companyId, setCompanyId] = useState("0")
+  useEffect(() => {
+    // get data from GitHub api
+    fetch(`http://192.168.1.68:8002/event/dog`, {
+      headers: {
+        accept: "application/json",
+      },
+    })
+      .then(response => response.json()) // parse JSON from request
+      .then(resultData => {
+        setCompanyId(resultData.companyId)
+      }) // set data for the number of stars
+  }, [])
 
   return (
     <MainContainer>
       <Wrapper>
-        <Title>Project event list</Title>
+        <Title>{companyId} event list</Title>
         <Description>All deteced events are listed here:</Description>
         <Grid>
-          {eventData.map(data => (
+          {eventData.map((data, index) => (
             <SectionRow
+              key={index}
               project_id={data.project_id}
               device_id={data.device_id}
               event_name={data.event_name}
@@ -26,8 +51,10 @@ export default function EventSection() {
             />
           ))}
         </Grid>
-        {videoChosen == null ? (
-          <NoVideo>Plesdasdasdsadas dasdsadasdas</NoVideo>
+        {videoChosen === "" ? (
+          <NoVideo>
+            Please select any event above to view the video footage.
+          </NoVideo>
         ) : (
           <Video videoSrcURL={videoChosen} videoTitle="PassCount" />
         )}
@@ -81,6 +108,6 @@ const Grid = styled.div`
 `
 
 const NoVideo = styled(H1)`
-  color: ${themes.dark.text1};
-  margin-top: 500px;
+  color: ${themes.light.text1};
+  margin-top: 50px;
 `
