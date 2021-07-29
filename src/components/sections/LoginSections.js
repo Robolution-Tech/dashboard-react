@@ -1,21 +1,33 @@
-import React from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
 import Input from "../layout/inputs"
 import Button from "../buttons/SigninButton"
+import { UserLoginContext } from "../../context/UserLoginContext"
 
 export default function LoginSection() {
+  const { isLogin } = useContext(UserLoginContext)
   return (
     <Wrapper>
-      <MainContainer>
-        <WelcomeText>Welcome</WelcomeText>
-        <InputContainer>
-          <Input type="text" placeholder="Email" />
-          <Input type="password" placeholder="Password" />
-        </InputContainer>
-        <Button content="User Login" />
-        <HorizontalRule />
-        <ForgotPassword>Forgot Password ?</ForgotPassword>
-      </MainContainer>
+      {isLogin ? (
+        <MainContainer>
+          <WelcomeText>Welcome</WelcomeText>
+          <WelcomeText>Keller Cons.</WelcomeText>
+          <Button content="Sign out" />
+        </MainContainer>
+      ) : (
+        <Wrapper>
+          <MainContainer>
+            <WelcomeText>Welcome </WelcomeText>
+            <InputContainer>
+              <Input type="text" placeholder="Email" />
+              <Input type="password" placeholder="Password" />
+            </InputContainer>
+            <Button content="Sign in" />
+            <HorizontalRule />
+            <ForgotPassword>Forgot Password ?</ForgotPassword>
+          </MainContainer>
+        </Wrapper>
+      )}
     </Wrapper>
   )
 }

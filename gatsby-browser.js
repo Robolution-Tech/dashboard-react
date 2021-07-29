@@ -7,7 +7,13 @@
 // You can delete this file if you're not using it
 import React from "react"
 import { VideoProvider } from "./src/context/UserVideoContext"
+import { UserLoginProvider } from "./src/context/UserLoginContext"
 
 export const wrapRootElement = ({ element }) => {
-  return <VideoProvider>{element}</VideoProvider>
+  // return <VideoProvider>{element}</VideoProvider>
+  return (
+    <UserLoginProvider>
+      <VideoProvider>{element}</VideoProvider>
+    </UserLoginProvider>
+  )
 }

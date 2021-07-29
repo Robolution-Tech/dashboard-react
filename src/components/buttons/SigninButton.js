@@ -1,14 +1,26 @@
-import React from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
+import { UserLoginContext } from "../../context/UserLoginContext"
 
 export default function Button({ content }) {
+  const { isLogin, setLogin } = useContext(UserLoginContext)
+  var dirPage = ""
+  if (!isLogin) {
+    dirPage = "/dashboard"
+  } else {
+    dirPage = "/signin"
+  }
   return (
-    <Link to="/dashboard">
-      <StyledButton>{content}</StyledButton>
-    </Link>
+    <Wrapper onClick={() => setLogin(!isLogin)}>
+      <Link to={dirPage}>
+        <StyledButton>{content}</StyledButton>
+      </Link>
+    </Wrapper>
   )
 }
+
+const Wrapper = styled.div``
 
 const StyledButton = styled.button`
   background: linear-gradient(to right, #14163c 0%, #03217b 79%);

@@ -1,12 +1,20 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import { Caption2, SmallText } from "../styles/TextStyles"
+import { UserLoginContext } from "../../context/UserLoginContext"
 
 export default function LoginButton(props) {
   const { title, subtitle } = props
+  const { isLogin } = useContext(UserLoginContext)
+  var dirPage = ""
+  if (isLogin) {
+    dirPage = "/dashboard"
+  } else {
+    dirPage = "/signin"
+  }
   return (
-    <Link to="/signin">
+    <Link to={dirPage}>
       <Wrapper>
         <IconWrapper>
           <Ring src="/images/icons/icon-ring.svg" />

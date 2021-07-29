@@ -8,4 +8,8 @@
 
 ### 🚀 TO-DO
 
-- [ ] Add useContext ( change videoProvider in src/context to userProvider)
+- [*] Add useContext ( change videoProvider in src/context to userProvider)
+- [*] Add graph to visualize the events
+- [ ] Add authentication in LoginSections.js
+- [ ] Add realtime video streaming
+- [ ] Deploy to public domain

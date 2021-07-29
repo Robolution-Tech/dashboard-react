@@ -1,9 +1,10 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
+import { UserLoginContext } from "../../context/UserLoginContext"
 
-// const menuData = ["Home", "User Login", "About Us"]
-const menuData = [
+// const menuDataNoLogin = ["Home", "User Login", "About Us"]
+const menuDataNoLogin = [
   { title: "Home", icon: "/images/icons/home.svg", link: "/" },
   {
     title: "User Login",
@@ -13,7 +14,27 @@ const menuData = [
   { title: "About Us", icon: "/images/icons/team.svg", link: "/aboutus" },
 ]
 
+const menuDataLogin = [
+  { title: "Home", icon: "/images/icons/home.svg", link: "/" },
+  {
+    title: "Dashboard",
+    icon: "/images/icons/courses.svg",
+    link: "/dashboard",
+  },
+  { title: "Sign Out", icon: "/images/icons/account.svg", link: "/" },
+  {
+    title: "Profile",
+    icon: "/images/icons/certificates.svg",
+    link: "/profile",
+  },
+]
+
 export default function Header() {
+  const { isLogin, setLogin } = useContext(UserLoginContext)
+  var finalMenudata = menuDataNoLogin
+  if (isLogin) {
+    finalMenudata = menuDataLogin
+  }
   return (
     <Wrapper>
       <Link to="/">
@@ -24,15 +45,24 @@ export default function Header() {
           height="60"
         />
       </Link>
-      <MenuWrapper count={menuData.length}>
-        {menuData.map((item, index) => (
-          <Link to={item.link} key={index}>
-            <MenuItem>
-              <img src={item.icon} alt={item.title} />
-              {item.title}
-            </MenuItem>
-          </Link>
-        ))}
+      <MenuWrapper count={finalMenudata.length}>
+        {finalMenudata.map((item, index) =>
+          item.title === "Sign Out" ? (
+            <Link to={item.link} key={index} onClick={() => setLogin(false)}>
+              <MenuItem>
+                <img src={item.icon} alt={item.title} />
+                {item.title}
+              </MenuItem>
+            </Link>
+          ) : (
+            <Link to={item.link} key={index}>
+              <MenuItem>
+                <img src={item.icon} alt={item.title} />
+                {item.title}
+              </MenuItem>
+            </Link>
+          )
+        )}
       </MenuWrapper>
     </Wrapper>
   )

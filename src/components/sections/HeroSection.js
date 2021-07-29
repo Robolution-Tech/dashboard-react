@@ -1,12 +1,14 @@
-import React from "react"
+import React, { useContext } from "react"
 import styled, { keyframes } from "styled-components"
 import { H1, MediumText } from "../styles/TextStyles"
 import { themes } from "../styles/ColorStyles"
 import LoginButton from "../buttons/HomeLoginButton"
 import MockupAnimation from "../animations/MockupAnimation"
 import WaveBackground from "../backgrounds/WaveBackground"
+import { UserLoginContext } from "../../context/UserLoginContext"
 
 function HeroSection() {
+  const { isLogin } = useContext(UserLoginContext)
   return (
     <Wrapper>
       <WaveBackground />
@@ -16,7 +18,11 @@ function HeroSection() {
           <Description>
             Bringing safety and robotics to the global construction industry
           </Description>
-          <LoginButton title="User Login" subtitle="Robolution users" />
+          {isLogin ? (
+            <LoginButton title="Welcome" subtitle="Take me to my dashboard" />
+          ) : (
+            <LoginButton title="User Login" subtitle="Robolution users" />
+          )}
         </TextWrapper>
         <MockupAnimation />
       </ContentWrapper>

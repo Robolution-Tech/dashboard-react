@@ -3,16 +3,25 @@ import styled from "styled-components"
 import { VideoContext } from "../../context/UserVideoContext"
 
 function SectionRow(props) {
-  const { project_id, device_id, event_name, eventdate, video_link } = props
+  const {
+    project_id,
+    device_id,
+    event_name,
+    event_value,
+    event_date,
+    video_link,
+  } = props
   const { setVideoChosen } = useContext(VideoContext)
   return (
     <Wrapper onClick={() => setVideoChosen(video_link)}>
-      <Index>{project_id}</Index>
+      <Index>{project_id.substr(0, 3)}</Index>
       <TextWrapper>
-        <Title>{device_id}</Title>
-        <Description>{event_name}</Description>
+        <Title>Device ID: {device_id}</Title>
+        <Description>
+          {event_name}: {event_value}
+        </Description>
       </TextWrapper>
-      <Date>{eventdate}</Date>
+      <Date>{event_date}</Date>
     </Wrapper>
   )
 }
@@ -43,11 +52,11 @@ const Wrapper = styled.div`
 
 const Index = styled.div`
   display: grid;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   background: rgba(68, 66, 179, 0.1);
   background-blend-mode: overlay;
-  border-radius: 50%;
+  border-radius: 5px;
   place-items: center;
 
   font-style: normal;
