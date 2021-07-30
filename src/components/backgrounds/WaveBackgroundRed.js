@@ -1,13 +1,16 @@
-import React from "react"
 import styled from "styled-components"
+import React from "react"
 
-export default function WaveBackground() {
+export default function WaveBackgroundRed() {
   return (
     <Wrapper>
       <Background />
-      <Wave src="/images/waves/course-wave1.svg" style={{ top: "100px" }} />
+      <Wave src="/images/waves/courses-wave2.svg" style={{ top: "100px" }} />
       <Wave src="/images/waves/hero-wave2.svg" style={{ top: "350px" }} />
-      <BottomWave src="/images/waves/hero-wave3.svg" style={{ top: "550px" }} />
+      <BottomWave
+        src="/images/waves/livestream-wave3.svg"
+        style={{ top: "550px" }}
+      />
     </Wrapper>
   )
 }

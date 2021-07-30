@@ -1,15 +1,15 @@
 import React from "react"
-import WaveBackground from "../components/backgrounds/WaveBackground"
 import Layout from "../components/layout/layout"
-import SEO from "../components/layout/seo"
+import Seo from "../components/layout/seo"
 import EventSection from "../components/sections/EventTableSection"
+import WaveBackgroundRed from "../components/backgrounds/WaveBackgroundRed"
 
 export default function DashboardPage() {
   return (
     <Layout>
-      <WaveBackground />
+      <WaveBackgroundRed />
       <EventSection />
-      <SEO title="Dashboard" />
+      <Seo title="Dashboard" />
     </Layout>
   )
 }

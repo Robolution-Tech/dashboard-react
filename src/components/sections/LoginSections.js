@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import styled from "styled-components"
 import Input from "../layout/inputs"
 import Button from "../buttons/SigninButton"
@@ -6,6 +6,8 @@ import { UserLoginContext } from "../../context/UserLoginContext"
 
 export default function LoginSection() {
   const { isLogin } = useContext(UserLoginContext)
+  const [userName, setUserName] = useState("")
+  const [userPassword, setUserPassword] = useState("")
   return (
     <Wrapper>
       {isLogin ? (
@@ -19,8 +21,18 @@ export default function LoginSection() {
           <MainContainer>
             <WelcomeText>Welcome </WelcomeText>
             <InputContainer>
-              <Input type="text" placeholder="Email" />
-              <Input type="password" placeholder="Password" />
+              <Input
+                type="text"
+                placeholder="Email"
+                value={userName}
+                onChange={event => setUserName(event.target.value)}
+              />
+              <Input
+                type="password"
+                placeholder="Password"
+                value={userPassword}
+                onChange={event => setUserPassword(event.target.value)}
+              />
             </InputContainer>
             <Button content="Sign in" />
             <HorizontalRule />
@@ -117,5 +129,6 @@ const HorizontalRule = styled.hr`
 `
 
 const ForgotPassword = styled.h4`
+  color: rgba(0, 0, 0, 0.8);
   cursor: pointer;
 `

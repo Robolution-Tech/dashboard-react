@@ -16,7 +16,7 @@ const StyledInput = styled.input`
   padding: 1rem;
   border: none;
   outline: none;
-  color: ${themes.dark.text1};
+  color: ${themes.light.text1};
   font-size: 1rem;
   font-weight: bold;
   &:focus {
@@ -26,7 +26,7 @@ const StyledInput = styled.input`
     border-radius: 2rem;
   }
   &::placeholder {
-    color: ${themes.dark.text1};
+    color: ${themes.light.text1};
     font-weight: 100;
     font-size: 1rem;
   }

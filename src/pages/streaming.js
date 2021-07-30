@@ -3,12 +3,12 @@ import Layout from "../components/layout/layout"
 import Seo from "../components/layout/seo"
 import WaveBackground from "../components/backgrounds/WaveBackground"
 
-export default function ProfilePage() {
+export default function StreamingPage() {
   return (
     <Layout>
       <WaveBackground />
-      <p>This is profile page!</p>
-      <Seo title="User Profile" />
+      <p>This is the streaming page</p>
+      <Seo title="Live Streaming" />
     </Layout>
   )
 }

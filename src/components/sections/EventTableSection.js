@@ -60,7 +60,7 @@ export default function EventSection() {
         <Wrapper>
           <Title>{companyId} event list</Title>
           <Chart content={eventData} />
-          <Description>All deteced events are listed here:</Description>
+          <Description>All detected events are listed here:</Description>
           <Grid>
             {eventData.map((data, index) => (
               <SectionRow
@@ -117,8 +117,7 @@ const Description = styled.p`
   font-size: 20px;
   line-height: 130%;
   color: rgba(0, 0, 0, 0.7);
-  margin: 0 auto;
-  margin-top: 20px;
+  margin: 20px auto 0;
 `
 
 const Grid = styled.div`

@@ -21,12 +21,17 @@ const menuDataLogin = [
     icon: "/images/icons/courses.svg",
     link: "/dashboard",
   },
-  { title: "Sign Out", icon: "/images/icons/account.svg", link: "/" },
+  {
+    title: "Streaming",
+    icon: "/images/icons/livestreams.svg",
+    link: "/streaming",
+  },
   {
     title: "Profile",
     icon: "/images/icons/certificates.svg",
     link: "/profile",
   },
+  { title: "Sign Out", icon: "/images/icons/account.svg", link: "/" },
 ]
 
 export default function Header() {
