@@ -79,7 +79,12 @@ export default function EventSection() {
               Please select any event above to view the video footage.
             </BlockedContent>
           ) : (
-            <Video videoSrcURL={videoChosen} videoTitle="PassCount" />
+            <Video
+              videoSrcURL={videoChosen}
+              videoTitle="PassCount"
+              width={"100%"}
+              height={"500px"}
+            />
           )}
         </Wrapper>
       ) : (

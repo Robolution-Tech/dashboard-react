@@ -11,5 +11,5 @@
 - [x] Add useContext ( change videoProvider in src/context to userProvider)
 - [x] Add graph to visualize the events
 - [ ] Add authentication in LoginSections.js
-- [ ] Add realtime video streaming
+- [x] Add realtime video streaming
 - [ ] Deploy to public domain
