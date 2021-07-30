@@ -58,7 +58,7 @@ export default function EventSection() {
     <MainContainer>
       {isLogin ? (
         <Wrapper>
-          <Title>{companyId} event list</Title>
+          <Title>Welcome, {companyId}</Title>
           <Chart content={eventData} />
           <Description>All detected events are listed here:</Description>
           <Grid>
@@ -113,15 +113,19 @@ const Title = styled.p`
 `
 
 const Description = styled.p`
-  max-width: 460px;
-  font-size: 20px;
+  //max-width: 460px;
+  //font-size: 20px;
+  //line-height: 130%;
+  //color: rgba(0, 0, 0, 0.7);
+  //margin: 20px auto 0;
+  font-style: normal;
+  font-size: 50px;
   line-height: 130%;
-  color: rgba(0, 0, 0, 0.7);
-  margin: 20px auto 0;
+  color: rgba(0, 0, 0, 0.8);
 `
 
 const Grid = styled.div`
-  margin-top: 50px;
+  margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 8px;
