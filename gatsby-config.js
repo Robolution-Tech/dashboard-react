@@ -30,6 +30,20 @@ module.exports = {
         showSpinner: false,
       },
     },
+    // `gatsby-transformer-sharp`,
+    // `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Robolution Official Website`,
+        short_name: `Robolution`,
+        start_url: `/`,
+        background_color: `#f7f0eb`,
+        theme_color: `#a2466c`,
+        display: `standalone`,
+        icon: `static/images/logos/logo.png`,
+      },
+    },
   ],
 }
 

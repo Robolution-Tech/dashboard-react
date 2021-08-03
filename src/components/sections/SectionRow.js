@@ -14,7 +14,7 @@ function SectionRow(props) {
   const { setVideoChosen } = useContext(VideoContext)
   return (
     <Wrapper onClick={() => setVideoChosen(video_link)}>
-      <Index>{project_id.substr(0, 3)}</Index>
+      <Index>{project_id.substr(0, 4)}</Index>
       <TextWrapper>
         <Title>Device ID: {device_id}</Title>
         <Description>
@@ -52,7 +52,7 @@ const Wrapper = styled.div`
 
 const Index = styled.div`
   display: grid;
-  width: 40px;
+  width: 45px;
   height: 40px;
   background: rgba(68, 66, 179, 0.1);
   background-blend-mode: overlay;

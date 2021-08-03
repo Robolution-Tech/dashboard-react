@@ -129,7 +129,7 @@ export default function Chart({ content }) {
 
               <Area dataKey="value1" stroke="#2451B7" fill="url(#color)" />
               <Area dataKey="value2" stroke="#b481B7" fill="url(#color)" />
-              <Area dataKey="value3" stroke="#d481B7" fill="url(#color)" />
+              <Area dataKey="value3" stroke="#29ba63" fill="url(#color)" />
 
               <XAxis
                 dataKey="date"

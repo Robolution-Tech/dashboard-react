@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react"
 import mapboxgl from "mapbox-gl"
 import "mapbox-gl/dist/mapbox-gl.css"
-import Video from "../sections/VideoSection"
+// import Video from "../sections/VideoSection"
+import ReactHlsPlayer from "react-hls-player"
 
 const styles = {
   width: "100%",
@@ -82,16 +83,26 @@ const MapView = ({ projectCams }) => {
   return (
     <div>
       <div ref={el => (mapContainer.current = el)} style={styles} />
-      <div>
+      <>
         {videoSrc === "" ? null : (
-          <Video
-            videoSrcURL={videoSrc}
-            videoTitle={`liveStream`}
-            width={"100%"}
-            height={"500px"}
+          // <Video
+          //   videoSrcURL={videoSrc}
+          //   videoTitle={`liveStream`}
+          //   width={"100%"}
+          //   height={"500px"}
+          // />
+          // <Title>
+          //   Live streaming:
+          // </Title>
+          <ReactHlsPlayer
+            src={videoSrc}
+            autoPlay={true}
+            controls={true}
+            width="100%"
+            height="auto"
           />
         )}
-      </div>
+      </>
     </div>
   )
 }
