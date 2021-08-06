@@ -2,8 +2,14 @@ import React from "react"
 import styled from "styled-components"
 import { themes } from "../styles/ColorStyles"
 
-export default function Input({ type, placeholder }) {
-  return <StyledInput type={type} placeholder={placeholder} />
+export default function Input({ type, placeholder, changed }) {
+  return (
+    <StyledInput
+      type={type}
+      placeholder={placeholder}
+      onChange={e => changed(e.target.value)}
+    />
+  )
 }
 
 const StyledInput = styled.input`

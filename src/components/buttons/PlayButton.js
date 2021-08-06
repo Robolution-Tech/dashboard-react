@@ -1,13 +1,11 @@
 import React from "react"
 import styled from "styled-components"
 
-export default function PlayButton(props) {
-  const { external_link } = props
-
+export default function PlayButton({ external_link, icon_url }) {
   return (
     <a href={`${external_link}`}>
       <IconWrapper>
-        <Icon src="/images/icons/file.svg" />
+        <Icon src={icon_url} />
       </IconWrapper>
     </a>
   )
@@ -41,7 +39,7 @@ const Wrapper = styled.div`
 const IconWrapper = styled.div`
   width: 45px;
   height: 45px;
-  background: linear-gradient(200.44deg, #4316db 13.57%, #9076e7 98.38%);
+  /* background: linear-gradient(200.44deg, #4316db 13.57%, #9076e7 98.38%); */
   border-radius: 50%;
   display: grid;
   justify-content: center;
@@ -54,8 +52,9 @@ const IconWrapper = styled.div`
   }
 `
 const Icon = styled.img`
-  width: 29px;
-  height: 29px;
+  width: 40px;
+  height: auto;
+  /* border-radius: 25%; */
   *,
   & {
     transition: 0.3s ease-in-out;

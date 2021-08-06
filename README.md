@@ -12,4 +12,7 @@
 - [x] Add graph to visualize the events
 - [ ] Add authentication in LoginSections.js
 - [x] Add realtime video streaming
-- [ ] Deploy to public domain
+- [x] Deploy to public domain
+- [x] Added live streaming support
+- [x] Team (About us) page
+- [ ] Contact us page

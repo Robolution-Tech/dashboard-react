@@ -3,6 +3,7 @@ import styled from "styled-components"
 import Input from "../layout/inputs"
 import Button from "../buttons/SigninButton"
 import { UserLoginContext } from "../../context/UserLoginContext"
+import RegularButton from "../buttons/RegularButton"
 
 export default function LoginSection() {
   const { isLogin } = useContext(UserLoginContext)
@@ -14,29 +15,41 @@ export default function LoginSection() {
         <MainContainer>
           <WelcomeText>Welcome</WelcomeText>
           <WelcomeText>Keller Cons.</WelcomeText>
-          <Button content="Sign out" />
+          <RegularButton title="Take me to the dashboard" dst="/dashboard" />
         </MainContainer>
       ) : (
         <Wrapper>
           <MainContainer>
-            <WelcomeText>Welcome </WelcomeText>
+            <WelcomeText>Welcome</WelcomeText>
             <InputContainer>
               <Input
                 type="text"
                 placeholder="Email"
                 value={userName}
-                onChange={event => setUserName(event.target.value)}
+                changed={e => setUserName(e)}
               />
               <Input
                 type="password"
                 placeholder="Password"
                 value={userPassword}
-                onChange={event => setUserPassword(event.target.value)}
+                changed={e => setUserPassword(e)}
               />
             </InputContainer>
-            <Button content="Sign in" />
+            <Button
+              title="Sign in"
+              userName={userName}
+              password={userPassword}
+            />
             <HorizontalRule />
-            <ForgotPassword>Forgot Password ?</ForgotPassword>
+            <ForgotPassword
+              onClick={() => {
+                alert(
+                  "Please contact admin@robolution.ca to retrieve your password!"
+                )
+              }}
+            >
+              Forgot Password ?
+            </ForgotPassword>
           </MainContainer>
         </Wrapper>
       )}
@@ -122,8 +135,7 @@ const HorizontalRule = styled.hr`
   height: 0.3rem;
   border-radius: 0.8rem;
   border: none;
-  background: linear-gradient(to right, #14163c 0%, #03217b 79%);
-  background-color: #ebd0d0;
+  background: #ebd0d0 linear-gradient(to right, #14163c 0%, #03217b 79%);
   margin: 1.5rem 0 1rem 0;
   backdrop-filter: blur(25px);
 `

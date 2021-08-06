@@ -4,8 +4,9 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Robolution Homepage`,
-    description: `This is Robolution's homepage`,
+    title: `Robolution Official Website`,
+    description: `Robolution is the leader in construction safety and automation`,
+    siteLanguage: `en`,
     author: `@bowen`,
   },
   plugins: [
@@ -44,6 +45,13 @@ module.exports = {
         icon: `static/images/logos/logo.png`,
       },
     },
+    // {
+    //   resolve: `@lekoarts/gatsby-theme-cara`,
+    //   options: {
+    //     // basePath defaults to `/`
+    //     basePath: `/aboutus`,
+    //   },
+    // },
   ],
 }
 
