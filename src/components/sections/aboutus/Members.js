@@ -33,6 +33,7 @@ const Members = () => {
               <Grid
                 columns={2}
                 style={{ gridColumnGap: "40px", marginBottom: 100 }}
+                key={name}
               >
                 <ColumnWrapper>
                   <Fade

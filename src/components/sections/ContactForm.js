@@ -13,53 +13,53 @@ const ContactForm = () => {
         {/* <Fade left duration={1000} delay={500} distance="50px"> */}
         <Container>
           <CenterWrapper>
-            <div class="form">
+            <div className="form">
               <form name="contact" method="POST" data-netlify="true">
-                <div class="title">Contact Form</div>
-                <div class="subtitle">
+                <div className="title">Contact Form</div>
+                <div className="subtitle">
                   Request a demo account or just want to ask questions? We are
                   here to help!
                 </div>
-                <div class="input-container ic1">
+                <div className="input-container ic1">
                   <input
                     id="name"
-                    class="input"
+                    className="input"
                     type="text"
                     name="name"
                     placeholder=" "
                   />
-                  <div class="cut cut-short"></div>
-                  <label htmlFor="name" class="placeholder">
+                  <div className="cut cut-short"></div>
+                  <label htmlFor="name" className="placeholder">
                     Name
                   </label>
                 </div>
-                <div class="input-container ic2">
+                <div className="input-container ic2">
                   <input
                     id="email"
-                    class="input"
+                    className="input"
                     type="text"
                     name="email"
                     placeholder=" "
                   />
-                  <div class="cut cut-short"></div>
-                  <label htmlFor="email" class="placeholder">
+                  <div className="cut cut-short"></div>
+                  <label htmlFor="email" className="placeholder">
                     Email
                   </label>
                 </div>
-                <div class="message-container">
+                <div className="message-container">
                   <textarea
                     id="message"
-                    class="input"
+                    className="input"
                     type="text"
                     placeholder=" "
                     name="message"
                   />
-                  <div class="cut"></div>
-                  <label htmlFor="message" class="placeholder">
+                  <div className="cut"></div>
+                  <label htmlFor="message" className="placeholder">
                     Message
                   </label>
                 </div>
-                <button type="text" class="submit">
+                <button type="text" className="submit">
                   Submit
                 </button>
               </form>
