@@ -14,12 +14,18 @@ const ContactForm = () => {
         <Container>
           <CenterWrapper>
             <div className="form">
-              <form name="contact" method="POST" data-netlify="true">
+              <form
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                onSubmit="submit"
+              >
                 <div className="title">Contact Form</div>
                 <div className="subtitle">
                   Request a demo account or just want to ask questions? We are
                   here to help!
                 </div>
+                <input type="hidden" name="contact-name" value="contact" />
                 <div className="input-container ic1">
                   <input
                     id="name"
@@ -37,7 +43,7 @@ const ContactForm = () => {
                   <input
                     id="email"
                     className="input"
-                    type="text"
+                    type="email"
                     name="email"
                     placeholder=" "
                   />
@@ -59,7 +65,7 @@ const ContactForm = () => {
                     Message
                   </label>
                 </div>
-                <button type="text" className="submit">
+                <button type="submit" className="submit">
                   Submit
                 </button>
               </form>
