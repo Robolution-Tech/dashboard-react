@@ -5,6 +5,7 @@ import Seo from "../components/layout/seo"
 import Header from "../components/sections/aboutus/AboutSection"
 import About from "../components/sections/aboutus/CompanyHighlight"
 import Members from "../components/sections/aboutus/Members"
+import Contact from "../components/sections/aboutus/Contact"
 // import WaveBackground from "../components/backgrounds/WaveBackground"
 
 function AboutPage() {
@@ -15,6 +16,7 @@ function AboutPage() {
       <Header />
       <About />
       <Members />
+      <Contact />
     </Layout>
   )
 }

@@ -12,6 +12,11 @@ const menuDataNoLogin = [
     link: "/signin",
   },
   { title: "About Us", icon: "/images/icons/team.svg", link: "/aboutus" },
+  {
+    title: "Contact",
+    icon: "/images/icons/chat.svg",
+    link: "/contactus",
+  },
 ]
 
 const menuDataLogin = [

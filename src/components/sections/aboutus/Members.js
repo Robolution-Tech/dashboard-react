@@ -3,7 +3,7 @@ import Fade from "react-reveal/Fade"
 import Tilt from "react-tilt"
 import styled from "styled-components"
 import Grid from "../../layout/grid"
-import teamInfo from "../../../testData/data/teaminfo"
+import teamInfo from "../../../staticData/teaminfo"
 import { H2, BodyMain, H3 } from "../../styles/TextStyles"
 import PlayButton from "../../buttons/PlayButton"
 
@@ -45,14 +45,6 @@ const Members = () => {
                     <TextWrapper>
                       <Name>{name}</Name>
                       <Description>{description}</Description>
-                      {/* <Button
-                      href={linkedin_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Linkedin
-                    </Button> */}
-
                       <PlayButton
                         external_link={linkedin_url}
                         icon_url={"/images/logos/LI-In-Bug.png"}

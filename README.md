@@ -15,4 +15,4 @@
 - [x] Deploy to public domain
 - [x] Added live streaming support
 - [x] Team (About us) page
-- [ ] Contact us page
+- [x] Contact us page

@@ -13,8 +13,8 @@ export default function LoginSection() {
     <Wrapper>
       {isLogin ? (
         <MainContainer>
-          <WelcomeText>Welcome</WelcomeText>
-          <WelcomeText>Keller Cons.</WelcomeText>
+          <WelcomeText>Welcome Back</WelcomeText>
+          {/* <WelcomeText>Keller Cons.</WelcomeText> */}
           <RegularButton title="Take me to the dashboard" dst="/dashboard" />
         </MainContainer>
       ) : (
@@ -66,17 +66,18 @@ const Wrapper = styled.div`
 `
 
 const MainContainer = styled.div`
+  margin-top: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 80vh;
-  width: 30vw;
+  /* height: 80vh; */
+  /* width: 30vw; */
   background: rgba(255, 255, 255, 0.15);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(8.5px);
   -webkit-backdrop-filter: blur(8.5px);
-  border-radius: 10px;
+  border-radius: 20px;
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 0.4rem;
@@ -112,7 +113,7 @@ const MainContainer = styled.div`
   }
   @media only screen and (min-width: 1280px) {
     width: 30vw;
-    height: 80vh;
+    height: 70vh;
   }
 `
 

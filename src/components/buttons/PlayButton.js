@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 export default function PlayButton({ external_link, icon_url }) {
   return (
-    <a href={`${external_link}`}>
+    <a href={`${external_link}`} target="_blank" rel="noopener noreferrer">
       <IconWrapper>
         <Icon src={icon_url} />
       </IconWrapper>
