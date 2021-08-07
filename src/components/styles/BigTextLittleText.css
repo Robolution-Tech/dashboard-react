@@ -1,0 +1,189 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+@font-face {
+  font-family: gingerBold;
+  src: url(https://s3.eu-west-2.amazonaws.com/mrb-code-handover-area/Sandbox/F37_Ginger_Webfont_Full_Set/f37ginger-bold-webfont.woff);
+}
+
+@font-face {
+  font-family: gingerRegular;
+  src: url(https://s3.eu-west-2.amazonaws.com/mrb-code-handover-area/Sandbox/F37_Ginger_Webfont_Full_Set/f37ginger-regular-webfont.woff);
+}
+
+.purple-font {
+  color: #7535de;
+}
+
+.green-font {
+  color: #00cf75;
+}
+
+/* Big Text overlping Little Text */
+
+.hiw-desktop-big-text {
+  color: #2e2b24;
+  font-size: 200px;
+}
+
+.bigText-mobile-trigger {
+  position: relative;
+  top: -25vh;
+}
+
+.foreground-little-text {
+  color: #00cf75;
+  max-width: 1060px;
+  padding-top: 170px;
+  padding-bottom: 170px;
+}
+
+/* CTAs and objects */
+
+.cta {
+  background-color: #00cf75;
+  border: 1px solid #ffffff;
+}
+
+.cta a {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.hide-cta {
+  display: none;
+}
+
+.bg-green {
+  background-color: #00cf75;
+  color: #fff;
+}
+
+.bg-green .cta {
+  background-color: #ffffff;
+  color: #00cf75;
+}
+
+.bg-purple h1,
+.bg-green h1,
+.toutContent-bg-purple h1 {
+  color: #fff;
+}
+
+.bg-purple {
+  background-color: #7535de;
+  color: #fff;
+}
+
+.bg-purple .cta {
+  background-color: #ffffff;
+  color: #7535de;
+}
+
+.toutContent-bg-purple .cta {
+  background-color: #7535de;
+}
+
+.bg-orange {
+  background-color: #dc7d07;
+  color: #ffffff;
+}
+
+.bg-orange .cta {
+  background-color: #ffffff;
+  color: #dc7d07;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes view-article-hover {
+  0% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+/* Standard syntax */
+@keyframes view-article-hover {
+  0% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.view-article-link {
+  display: inline-block;
+}
+
+/* How It Works */
+
+.hiw-overlap-background {
+  background: linear-gradient(360deg, #ffffff 20%, #7535de 0, #7535de 80%);
+}
+@media only screen and (min-width: 640px) {
+  .hiw-overlap-background {
+    background: linear-gradient(90deg, #ffffff 40%, #7535de 0, #7535de 60%);
+  }
+}
+
+.hiw-overlap-image {
+  right: 0;
+  min-height: 15rem;
+}
+
+@media only screen and (min-width: 640px) {
+  .hiw-overlap-image {
+    right: 40%;
+    padding-top: 28%;
+  }
+}
+
+.hiw-overlap-copy {
+  padding-top: 75px;
+  padding-bottom: 40px;
+}
+
+@media only screen and (min-width: 640px) {
+  .hiw-overlap-copy {
+    padding-right: 130px;
+    padding-bottom: 130px;
+  }
+}
+
+.hiw-overlap-copy-mw {
+  max-width: 355px;
+}
+
+.hiw-sbs-copy {
+  max-width: 470px;
+}
+
+.hiw-sbs-mobile-image {
+  bottom: 1.5rem;
+}
+
+.hiw-mobile-big-text {
+  font-size: 100px;
+  max-width: 1600px;
+  line-height: 1;
+  top: 30vh;
+  text-align: center;
+}
+
+.hiw-little-text {
+  font-family: gingerRegular;
+  max-width: 190px;
+  color: #7535de;
+}
+
+.purple-line {
+  background-color: #7535de;
+}

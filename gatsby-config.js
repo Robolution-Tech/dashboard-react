@@ -10,6 +10,8 @@ module.exports = {
     author: `@bowen`,
   },
   plugins: [
+    `gatsby-plugin-postcss`,
+    `gatsby-plugin-anchor-links`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,

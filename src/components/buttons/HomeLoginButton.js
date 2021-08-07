@@ -17,7 +17,7 @@ export default function LoginButton(props) {
     <Link to={dirPage}>
       <Wrapper>
         <IconWrapper>
-          <Ring src="/images/icons/icon-ring.svg" />
+          {/* <Ring src="/images/icons/icon-ring.svg" /> */}
           <Icon src="/images/icons/account.svg" />
         </IconWrapper>
         <TextWrapper>
@@ -86,11 +86,12 @@ const Icon = styled.img`
   height: 29px;
 `
 
-const Ring = styled.img`
-  position: absolute;
-  top: -15px;
-  left: -16px;
-  ${Wrapper}:hover & {
-    transform: rotate(30deg) scale(1.2) translate(1px, 1px);
-  }
-`
+// const Ring = styled.img`
+//   position: absolute;
+//   top: 0px;
+//   left: 2px;
+//   scale: 5;
+//   ${Wrapper}:hover & {
+//     transform: rotate(30deg) scale(1.2) translate(1px, 1px);
+//   }
+// `

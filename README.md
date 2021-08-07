@@ -16,3 +16,6 @@
 - [x] Added live streaming support
 - [x] Team (About us) page
 - [x] Contact us page
+- [x] Project/Product Demonstration page
+- [ ] Customize BigTextLiiteText?
+- [ ] Dark mode

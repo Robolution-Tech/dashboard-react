@@ -10,7 +10,6 @@ const ContactForm = () => {
     <Wrapper>
       <WaveBackgroundNew />
       <MainWrapper>
-        {/* <Fade left duration={1000} delay={500} distance="50px"> */}
         <Container>
           <CenterWrapper>
             <div className="form">
@@ -67,7 +66,6 @@ const ContactForm = () => {
             </div>
           </CenterWrapper>
         </Container>
-        {/* </Fade> */}
       </MainWrapper>
     </Wrapper>
   )
@@ -98,7 +96,7 @@ const Container = styled.div`
   background-color: #15172b;
   border-radius: 20px;
   box-sizing: border-box;
-  height: 650px;
+  height: 700px;
   padding: 20px;
   width: 500px;
 

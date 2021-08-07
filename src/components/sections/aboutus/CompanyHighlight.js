@@ -76,7 +76,6 @@ const MainWrapper = styled.section`
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
   padding-bottom: 10%;
-  //margin-top: 30px;
 `
 const Title = styled(H2)`
   text-align: center;

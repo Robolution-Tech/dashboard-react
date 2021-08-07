@@ -112,3 +112,8 @@
 .submit:active {
   background-color: #06b;
 }
+
+.submit:hover {
+  background-color: #eee;
+  color: #08d;
+}

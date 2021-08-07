@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+START -----------
+BILLBOARD 
+START -----------
+*/
+
+.billboard__container {
+  /* height: 100vh; */
+}
+
+.billboard {
+  margin: 0 auto;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  transition: transform 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.billboard__image {
+  height: 100vh;
+  width: 100%;
+  /* background-image: url("https://source.unsplash.com/user/rafaelnadai"); */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.section-border {
+  will-change: transform, opacity;
+  background-color: rgb(240, 245, 254);
+  /* transition: transform 1s cubic-bezier(0.075, 0.82, 0.165, 1); */
+}
+
+.billboard div {
+  max-width: 90%;
+}
+
+.billboard img {
+  width: 100%;
+  height: 900px;
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 760px) {
+  .billboard {
+    left: 10%;
+    top: 50%;
+    transform: translate3d(0%, -50%, 0);
+  }
+}
+
+.h5 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.description {
+  font-size: 18px;
+}
+
+.button {
+  font-size: 18px;
+  color: #fff;
+  transition: all 0.4s ease 0s;
+  background: rgba(124, 58, 237, 1);
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #ed3370;
+}
+/* 
+  END -----------
+  BILLBOARD 
+  END -----------
+  */
