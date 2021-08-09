@@ -18,7 +18,7 @@ function HeroSection() {
           <Description>
             Bringing safety and robotics to the global construction industry
           </Description>
-          {isLogin ? (
+          {isLogin !== "false" ? (
             <LoginButton title="Welcome" subtitle="Take me to my dashboard" />
           ) : (
             <LoginButton title="User Login" subtitle="Robolution users" />

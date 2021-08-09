@@ -7,6 +7,7 @@ import { UserLoginContext } from "../../context/UserLoginContext"
 import { themes } from "../styles/ColorStyles"
 import { H1 } from "../styles/TextStyles"
 import Chart from "./ChartSection"
+import { CenterWrapper } from "../layout/centerWrapper"
 
 const formatTimeByOffset = (dateString, offset) => {
   // Params:
@@ -60,20 +61,20 @@ async function postData(url = "") {
 export default function EventSection() {
   const { videoChosen } = useContext(VideoContext)
   const { isLogin } = useContext(UserLoginContext)
-  const [companyId, setCompanyId] = useState("")
+  // const [companyId, setCompanyId] = useState(isLogin)
   const [eventData, setEventData] = useState([])
-  useEffect(() => {
-    // get company ID, test connection
-    fetch(`http://34.208.203.215:8000/event/keller`, {
-      headers: {
-        accept: "application/json",
-      },
-    })
-      .then(response => response.json()) // parse JSON from request
-      .then(resultData => {
-        setCompanyId(resultData.companyId)
-      }) // set data for the number of stars
-  }, [])
+  // useEffect(() => {
+  //   // get company ID, test connection
+  //   fetch(`https://fastapi.robolution.ca/event/keller`, {
+  //     headers: {
+  //       accept: "application/json",
+  //     },
+  //   })
+  //     .then(response => response.json()) // parse JSON from request
+  //     .then(resultData => {
+  //       setCompanyId(resultData.companyId)
+  //     }) // set data for the number of stars
+  // }, [])
 
   // useEffect(() => {
   //   postData(`http://34.208.203.215:8000/event/keller/esso/query_all`, {
@@ -83,8 +84,10 @@ export default function EventSection() {
   //     setEventData(resultData)
   //   })
   // }, [])
+  // TODO: Parse company ID to query all project names
+  // TODO: Add timestamps to query all events of interest
   useEffect(() => {
-    postData(`http://34.208.203.215:8000/event/keller/esso/query_all`).then(
+    postData(`https://fastapi.robolution.ca/event/keller/esso/query_all`).then(
       resultData => {
         setEventData(resultData)
       }
@@ -93,9 +96,9 @@ export default function EventSection() {
 
   return (
     <MainContainer>
-      {isLogin ? (
+      {isLogin !== "false" ? (
         <Wrapper>
-          <Title>Welcome, {companyId}</Title>
+          <Title>Welcome, {isLogin}</Title>
           <Chart content={eventData} />
           <Description>All detected events are listed here:</Description>
           <Grid>
@@ -106,8 +109,8 @@ export default function EventSection() {
                 device_id={data.deviceId}
                 event_name={data.event_name}
                 event_value={data.event_value}
-                event_date={formatTimeByOffset(data.time, -12).substr(0, 16)}
-                video_link={data.fileDir}
+                event_date={formatTimeByOffset(data.time, 0).substr(0, 16)}
+                video_link={"https:/" + data.fileDir}
               />
             ))}
           </Grid>
@@ -116,12 +119,14 @@ export default function EventSection() {
               Please select any event above to view the video footage.
             </BlockedContent>
           ) : (
-            <Video
-              videoSrcURL={videoChosen}
-              videoTitle="PassCount"
-              width={"680px"}
-              height={"480px"}
-            />
+            <CenterWrapper>
+              <Video
+                videoSrcURL={videoChosen}
+                videoTitle="PassCount"
+                width={"680px"}
+                height={"480px"}
+              />
+            </CenterWrapper>
           )}
         </Wrapper>
       ) : (

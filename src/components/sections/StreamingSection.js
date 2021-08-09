@@ -11,7 +11,7 @@ const projectDescription = [
     properties: {
       description:
         "Device ID: <strong>Cam 1</strong><p> Project ID: Esso #795</p>",
-      url: "http://192.168.1.70:8080/camera1_hls/stream.m3u8",
+      url: "https://3927282f5050.us-west-2.playback.live-video.net/api/video/v1/us-west-2.892251806435.channel.ntymdhLALoOC.m3u8",
     },
     geometry: {
       type: "Point",
@@ -23,7 +23,7 @@ const projectDescription = [
     properties: {
       description:
         "Device ID:<strong>Cam 2</strong><p>Project ID: Safeway #368</p>",
-      url: "http://192.168.1.70:8080/hls/stream.m3u8",
+      url: "https://3927282f5050.us-west-2.playback.live-video.net/api/video/v1/us-west-2.892251806435.channel.PfRwjOJoaWdI.m3u8",
     },
     geometry: {
       type: "Point",
@@ -34,12 +34,17 @@ const projectDescription = [
 
 export default function StreamingSection() {
   const { isLogin } = useContext(UserLoginContext)
+  var cameraInfo = projectDescription
+
+  if (isLogin !== "Demo") {
+    //TODO: If not Demo, we need to fetch their camera information
+  }
 
   return (
     <Wrapper>
       <Grid>
         {isLogin ? (
-          <MapView projectCams={projectDescription} />
+          <MapView projectCams={cameraInfo} />
         ) : (
           <BlockedContent>You need to login first!</BlockedContent>
         )}

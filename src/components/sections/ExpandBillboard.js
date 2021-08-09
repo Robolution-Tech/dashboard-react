@@ -152,7 +152,7 @@ function BillboardExpand({ img_url, title, subtitle, description }) {
             {/* <button className="button text-xs text-left font-bold py-2 px-4 rounded-full"> */}
             <AnchorLink
               className="button text-xs text-left font-bold py-2 px-4 rounded-full"
-              to="/#video"
+              to={"/#video"}
             >
               Learn more
             </AnchorLink>

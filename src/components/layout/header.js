@@ -42,7 +42,7 @@ const menuDataLogin = [
 export default function Header() {
   const { isLogin, setLogin } = useContext(UserLoginContext)
   var finalMenudata = menuDataNoLogin
-  if (isLogin) {
+  if (isLogin !== "false") {
     finalMenudata = menuDataLogin
   }
   return (
@@ -58,7 +58,7 @@ export default function Header() {
       <MenuWrapper count={finalMenudata.length}>
         {finalMenudata.map((item, index) =>
           item.title === "Sign Out" ? (
-            <Link to={item.link} key={index} onClick={() => setLogin(false)}>
+            <Link to={item.link} key={index} onClick={() => setLogin("false")}>
               <MenuItem>
                 <img src={item.icon} alt={item.title} />
                 {item.title}
