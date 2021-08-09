@@ -43,7 +43,7 @@ export default function StreamingSection() {
   return (
     <Wrapper>
       <Grid>
-        {isLogin ? (
+        {isLogin !== "false" ? (
           <MapView projectCams={cameraInfo} />
         ) : (
           <BlockedContent>You need to login first!</BlockedContent>
