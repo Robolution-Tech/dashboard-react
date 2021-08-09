@@ -11,6 +11,8 @@ const styles = {
 }
 
 const mapboxToken = process.env.GATSBY_MAPBOX_TOKEN
+mapboxgl.workerClass =
+  require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default
 
 const MapView = ({ projectCams }) => {
   const [map, setMap] = useState(null)
