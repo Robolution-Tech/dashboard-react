@@ -3,6 +3,7 @@ import mapboxgl from "mapbox-gl"
 import "mapbox-gl/dist/mapbox-gl.css"
 // import Video from "../sections/VideoSection"
 import ReactHlsPlayer from "react-hls-player"
+import { AnchorLink } from "gatsby-plugin-anchor-links"
 
 const styles = {
   width: "100%",
@@ -65,7 +66,7 @@ const MapView = ({ projectCams }) => {
         })
 
         map.on("click", "places", e => {
-          var link = e.features[0].properties.url
+          let link = e.features[0].properties.url
           setVideoSrc(link)
         })
 
@@ -84,7 +85,10 @@ const MapView = ({ projectCams }) => {
 
   return (
     <div>
-      <div ref={el => (mapContainer.current = el)} style={styles} />
+      <AnchorLink to={"/streaming/#streaming_content"}>
+        <div ref={el => (mapContainer.current = el)} style={styles} />
+      </AnchorLink>
+
       <>
         {videoSrc === "" ? null : (
           // <Video
@@ -97,6 +101,7 @@ const MapView = ({ projectCams }) => {
           //   Live streaming:
           // </Title>
           <ReactHlsPlayer
+            id="streaming_content"
             src={videoSrc}
             autoPlay={true}
             controls={true}

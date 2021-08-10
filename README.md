@@ -16,7 +16,7 @@
 - [x] Team (About us) page
 - [x] Contact us page
 - [x] Project/Product Demonstration page
-- [ ] (Event filter) Company project tabs
+- [x] (Event filter) Company project tabs
 - [ ] (Event filter) Time interval selections
 - [ ] Customize BigTextLiiteText?
 - [ ] Add authentication in LoginSections.js

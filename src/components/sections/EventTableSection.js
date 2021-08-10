@@ -11,6 +11,8 @@ import Chart from "./ChartSection"
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
 import ThreeDotsWave from "../animations/LoadingAnimation"
 import "../styles/ReactTabs.css"
+import { RangeDatePicker } from "react-google-flight-datepicker"
+import "react-google-flight-datepicker/dist/main.css"
 
 const formatTimeByOffset = (dateString, offset) => {
   // Params:
@@ -42,7 +44,30 @@ const formatTimeByOffset = (dateString, offset) => {
   return `${newDateString}`
 }
 
-async function postData(url = "") {
+// async function postData(url = "") {
+//   // Default options are marked with *
+//   try {
+//     const response = await fetch(url, {
+//       method: "POST", // *GET, POST, PUT, DELETE, etc.
+//       // mode: "cors", // no-cors, *cors, same-origin
+//       // cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+//       // credentials: "same-origin", // include, *same-origin, omit
+//       headers: {
+//         accept: "application/json",
+//         "Content-Type": "application/json",
+//       },
+
+//       // redirect: "follow", // manual, *follow, error
+//       // referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+//       // body: JSON.stringify(data), // body data type must match "Content-Type" header
+//     })
+//     return response.json()
+//   } catch (e) {
+//     console.warn("Unable to fetch")
+//   }
+// }
+
+async function postDataInRange(url = "", startTime = "", endTime = "") {
   // Default options are marked with *
   try {
     const response = await fetch(url, {
@@ -57,11 +82,11 @@ async function postData(url = "") {
 
       // redirect: "follow", // manual, *follow, error
       // referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-      // body: JSON.stringify(data), // body data type must match "Content-Type" header
+      body: JSON.stringify({ values: {}, time_interval: [startTime, endTime] }), // body data type must match "Content-Type" header
     })
     return response.json()
   } catch (e) {
-    console.warn("Unable")
+    console.warn("Unable to fetch")
   }
 }
 
@@ -85,7 +110,12 @@ export default function EventSection() {
   const [projectData, setProjectData] = useState([])
   const [tabIndex, setTabIndex] = useState(0)
   const [eventData, setEventData] = useState([])
+  const [dateRange, setDateRange] = useState([
+    new Date(2021, 1, 1),
+    new Date(2022, 1, 1),
+  ])
   const [isDataLoaded, setIsDataLoaded] = useState(false)
+  const [isRangeValid, setIsRangeValid] = useState(true)
 
   // TODO: Parse company ID to query all project names
   // TODO: Add timestamps to query all events of interest
@@ -103,18 +133,48 @@ export default function EventSection() {
   }, [])
 
   useEffect(() => {
-    if (typeof projectData[tabIndex] !== "undefined") {
-      postData(
+    if (
+      typeof projectData[tabIndex] !== "undefined" &&
+      dateRange[0] !== null &&
+      dateRange[1] !== null
+    ) {
+      const startDate = dateRange[0]
+        .toISOString()
+        .slice(0, -1)
+        .replace("T", " ")
+      const endDate = dateRange[1].toISOString().slice(0, -1).replace("T", " ")
+      postDataInRange(
         `https://fastapi.robolution.ca/event/keller/` +
           projectData[tabIndex] +
-          `/query_all`
+          `/query_time`,
+        startDate,
+        endDate
       ).then(resultData => {
-        setEventData(resultData)
-        setIsDataLoaded(true)
+        // console.log(resultData)
+        if (
+          typeof resultData == "undefined" ||
+          typeof resultData[0] === "undefined"
+        ) {
+          setIsDataLoaded(false)
+          setIsRangeValid(false)
+        } else {
+          setEventData(resultData)
+          setIsDataLoaded(true)
+          setIsRangeValid(true)
+        }
+        // console.log(resultData)
+
         // return resultData.tabel_list
       })
     }
-  }, [tabIndex, projectData])
+  }, [tabIndex, projectData, dateRange])
+
+  // useEffect(() => {
+  //   const startDate = dateRange[0].toISOString().slice(0, -1).replace("T", " ")
+  //   const endDate = dateRange[1].toISOString().slice(0, -1).replace("T", " ")
+
+  //   console.log(dateRange[0].toISOString().slice(0, -1).replace("T", " "))
+  // }, [dateRange])
 
   return (
     <MainContainer>
@@ -123,16 +183,31 @@ export default function EventSection() {
           <Title>Welcome, {isLogin}</Title>
           {isDataLoaded ? (
             <div>
-              <Description>Select your proejct here:</Description>
+              <Description>Select your proejct and date range:</Description>
+              <RangeDatePicker
+                onChange={(startDate, endDate) => {
+                  setDateRange([startDate, endDate])
+                }}
+                startDate={dateRange[0]}
+                endDate={dateRange[1]}
+                // minDate={new Date(1900, 0, 1)}
+                // maxDate={new Date(2100, 0, 1)}
+                // dateFormat="D"
+                // monthFormat="MMM YYYY"
+                startDatePlaceholder="Start Date"
+                endDatePlaceholder="End Date"
+                highlightToday="true"
+                // disabled={false}
+                // className="my-own-class-name"
+                // startWeekDay="monday"
+              />
               <Tabs
                 selectedIndex={tabIndex}
                 onSelect={index => setTabIndex(index)}
               >
                 <TabList>
                   {projectData.map((projectID, index) => (
-                    <Tab key={index} numberOfTabs={projectData.length}>
-                      {projectID}
-                    </Tab>
+                    <Tab key={index}>{projectID}</Tab>
                   ))}
                 </TabList>
                 {projectData.map(projectID => (
@@ -175,7 +250,28 @@ export default function EventSection() {
             </div>
           ) : (
             <LoadingContainer>
-              <ThreeDotsWave />
+              {isRangeValid ? (
+                <ThreeDotsWave />
+              ) : (
+                <BlockedContent>
+                  No event found in the selected range!
+                  <RangeDatePicker
+                    onChange={(startDate, endDate) => {
+                      setDateRange([startDate, endDate])
+                    }}
+                    // minDate={new Date(1900, 0, 1)}
+                    // maxDate={new Date(2100, 0, 1)}
+                    // dateFormat="D"
+                    // monthFormat="MMM YYYY"
+                    startDatePlaceholder="Start Date"
+                    endDatePlaceholder="End Date"
+                    highlightToday="true"
+                    // disabled={false}
+                    // className="my-own-class-name"
+                    // startWeekDay="monday"
+                  />
+                </BlockedContent>
+              )}
             </LoadingContainer>
           )}
         </Wrapper>
@@ -208,6 +304,7 @@ const Title = styled.p`
   line-height: 130%;
   text-transform: uppercase;
   color: #ffffff;
+  margin-bottom: 30px;
 `
 
 const Description = styled.p`
@@ -263,41 +360,3 @@ const LoadingContainer = styled.div`
   backdrop-filter: blur(40px);
   border-radius: 20px;
 `
-
-// const StyledTab = styled(Tab)`
-//   z-index: 100;
-//   background: rgba(255, 255, 255, 0.6);
-//   border: 0.5px solid rgba(255, 255, 255, 0.6);
-//   border-radius: 10px 10px 0 0;
-//   color: #fff;
-//   display: table-cell;
-//   width: calc(100% / ${props => props.numberOfTabs});
-//   border: 1px solid transparent;
-//   border-bottom: none;
-//   bottom: -1px;
-//   position: relative;
-//   list-style: none;
-//   padding: 6px 12px;
-//   cursor: pointer;
-//   font-size: 30px;
-
-//   :hover {
-//     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1),
-//       0px 30px 60px rgba(23, 0, 102, 0.5),
-//       inset 0px 0px 0px 0.5px rgba(255, 255, 255, 0.5);
-//     transform: translateY(-3px);
-//   }
-
-//   :active,
-//   :visited {
-//     background: rgba(255, 255, 255, 1);
-//     border: 0.5px solid rgba(255, 255, 255, 1);
-//     color: hsl(208, 99%, 50%);
-//     border-radius: 10px 10px 0 0;
-//   }
-//   :focus {
-//     box-shadow: 0 0 5px hsl(208, 99%, 50%);
-//     border-color: hsl(208, 99%, 50%);
-//     outline: none;
-//   }
-// `

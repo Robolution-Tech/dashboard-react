@@ -127,9 +127,24 @@ export default function Chart({ content }) {
                 </linearGradient>
               </defs>
 
-              <Area dataKey="value1" stroke="#2451B7" fill="url(#color)" />
-              <Area dataKey="value2" stroke="#b481B7" fill="url(#color)" />
-              <Area dataKey="value3" stroke="#29ba63" fill="url(#color)" />
+              <Area
+                dataKey="value1"
+                stroke="#2451B7"
+                fill="url(#color)"
+                strokeWidth={3}
+              />
+              <Area
+                dataKey="value2"
+                stroke="#b481B7"
+                fill="url(#color)"
+                strokeWidth={3}
+              />
+              <Area
+                dataKey="value3"
+                stroke="#29ba63"
+                fill="url(#color)"
+                strokeWidth={3}
+              />
 
               <XAxis
                 dataKey="date"
