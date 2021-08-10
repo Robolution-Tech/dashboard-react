@@ -10,12 +10,14 @@
 
 - [x] Add useContext ( change videoProvider in src/context to userProvider)
 - [x] Add graph to visualize the events
-- [ ] Add authentication in LoginSections.js
 - [x] Add realtime video streaming
 - [x] Deploy to public domain
 - [x] Added live streaming support
 - [x] Team (About us) page
 - [x] Contact us page
 - [x] Project/Product Demonstration page
+- [ ] (Event filter) Company project tabs
+- [ ] (Event filter) Time interval selections
 - [ ] Customize BigTextLiiteText?
+- [ ] Add authentication in LoginSections.js
 - [ ] Dark mode

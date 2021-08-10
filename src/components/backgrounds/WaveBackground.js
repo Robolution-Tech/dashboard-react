@@ -32,7 +32,7 @@ const BottomWave = styled(Wave)`
 `
 
 const Background = styled.div`
-  background: linear-gradient(180deg, #4316db 0%, #9076e7 100%);
+  background: linear-gradient(180deg, #ebb328 0%, #9076e7 100%);
   position: absolute;
   width: 100%;
   height: 800px;

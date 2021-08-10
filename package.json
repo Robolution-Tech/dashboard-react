@@ -43,6 +43,7 @@
     "react-reveal": "^1.2.2",
     "react-scroll-parallax": "^2.4.0",
     "react-scrollmagic": "^2.3.0",
+    "react-tabs": "^3.2.2",
     "react-tilt": "^0.1.4",
     "reactstrap": "^8.9.0",
     "recharts": "^2.0.10",

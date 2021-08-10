@@ -249,7 +249,7 @@ const BlockedContent = styled.div`
 `
 
 const Grid = styled.div`
-  margin-top: 50px;
+  /* margin-top: 50px; */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 8px;

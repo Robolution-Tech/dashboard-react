@@ -118,6 +118,7 @@ const MainContainer = styled.div`
 `
 
 const WelcomeText = styled.h2`
+  text-align: center;
   font-size: 50px;
   margin: 0 0 2rem 0;
 `
