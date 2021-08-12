@@ -11,9 +11,9 @@ export default function LoginSection() {
   const [userPassword, setUserPassword] = useState("")
   return (
     <Wrapper>
-      {isLogin !== "false" ? (
+      {isLogin[0] !== "false" ? (
         <MainContainer>
-          <WelcomeText>Welcome Back</WelcomeText>
+          <WelcomeText>Welcome Back {isLogin[0]}</WelcomeText>
           {/* <WelcomeText>Keller Cons.</WelcomeText> */}
           <RegularButton title="Take me to the dashboard" dst="/dashboard" />
         </MainContainer>

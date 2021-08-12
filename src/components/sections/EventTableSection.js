@@ -13,6 +13,7 @@ import ThreeDotsWave from "../animations/LoadingAnimation"
 import "../styles/ReactTabs.css"
 import { RangeDatePicker } from "react-google-flight-datepicker"
 import "react-google-flight-datepicker/dist/main.css"
+import { UserTokenContext } from "../../context/UserTokenContext"
 
 const formatTimeByOffset = (dateString, offset) => {
   // Params:
@@ -43,29 +44,6 @@ const formatTimeByOffset = (dateString, offset) => {
   // Step f: Return the new formatted date string with the added offset
   return `${newDateString}`
 }
-
-// async function postData(url = "") {
-//   // Default options are marked with *
-//   try {
-//     const response = await fetch(url, {
-//       method: "POST", // *GET, POST, PUT, DELETE, etc.
-//       // mode: "cors", // no-cors, *cors, same-origin
-//       // cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-//       // credentials: "same-origin", // include, *same-origin, omit
-//       headers: {
-//         accept: "application/json",
-//         "Content-Type": "application/json",
-//       },
-
-//       // redirect: "follow", // manual, *follow, error
-//       // referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-//       // body: JSON.stringify(data), // body data type must match "Content-Type" header
-//     })
-//     return response.json()
-//   } catch (e) {
-//     console.warn("Unable to fetch")
-//   }
-// }
 
 async function postDataInRange(url = "", startTime = "", endTime = "") {
   // Default options are marked with *
@@ -107,6 +85,7 @@ async function getData(url = "") {
 export default function EventSection() {
   const { videoChosen } = useContext(VideoContext)
   const { isLogin } = useContext(UserLoginContext)
+  const { userToken } = useContext(UserTokenContext)
   const [projectData, setProjectData] = useState([])
   const [tabIndex, setTabIndex] = useState(0)
   const [eventData, setEventData] = useState([])
@@ -124,50 +103,65 @@ export default function EventSection() {
   // Called when site mounted
   // TODO: Add time filter
   useEffect(() => {
-    getData(`https://fastapi.robolution.ca/event/keller/project_list`).then(
-      resultData => {
-        setProjectData(resultData.tabel_list)
-        // return resultData.tabel_list
-      }
-    )
-  }, [])
+    getData(
+      `https://fastapi.robolution.ca/event/` +
+        isLogin[1] +
+        `/project_list?token=` +
+        userToken +
+        `&user=` +
+        isLogin[0]
+    ).then(resultData => {
+      setProjectData(resultData.tabel_list)
+      // return resultData.tabel_list
+    })
+  }, [isLogin, userToken])
 
   useEffect(() => {
-    if (
-      typeof projectData[tabIndex] !== "undefined" &&
-      dateRange[0] !== null &&
-      dateRange[1] !== null
-    ) {
-      const startDate = dateRange[0]
-        .toISOString()
-        .slice(0, -1)
-        .replace("T", " ")
-      const endDate = dateRange[1].toISOString().slice(0, -1).replace("T", " ")
-      postDataInRange(
-        `https://fastapi.robolution.ca/event/keller/` +
-          projectData[tabIndex] +
-          `/query_time`,
-        startDate,
-        endDate
-      ).then(resultData => {
-        // console.log(resultData)
-        if (
-          typeof resultData == "undefined" ||
-          typeof resultData[0] === "undefined"
-        ) {
-          setIsDataLoaded(false)
-          setIsRangeValid(false)
-        } else {
-          setEventData(resultData)
-          setIsDataLoaded(true)
-          setIsRangeValid(true)
-        }
-        // console.log(resultData)
+    if (projectData !== null) {
+      if (
+        typeof projectData[tabIndex] !== "undefined" &&
+        dateRange[0] !== null &&
+        dateRange[1] !== null
+      ) {
+        const startDate = dateRange[0]
+          .toISOString()
+          .slice(0, -1)
+          .replace("T", " ")
+        const endDate = dateRange[1]
+          .toISOString()
+          .slice(0, -1)
+          .replace("T", " ")
+        postDataInRange(
+          `https://fastapi.robolution.ca/event/` +
+            isLogin[1] +
+            `/` +
+            projectData[tabIndex] +
+            `/query_time?token=` +
+            userToken +
+            `&user=` +
+            isLogin[0],
+          startDate,
+          endDate
+        ).then(resultData => {
+          // console.log(resultData)
+          if (
+            typeof resultData == "undefined" ||
+            typeof resultData[0] === "undefined"
+          ) {
+            setIsDataLoaded(false)
+            setIsRangeValid(false)
+          } else {
+            setEventData(resultData)
+            setIsDataLoaded(true)
+            setIsRangeValid(true)
+          }
+          // console.log(resultData)
 
-        // return resultData.tabel_list
-      })
+          // return resultData.tabel_list
+        })
+      }
     }
-  }, [tabIndex, projectData, dateRange])
+  }, [tabIndex, projectData, dateRange, isLogin, userToken])
 
   // useEffect(() => {
   //   const startDate = dateRange[0].toISOString().slice(0, -1).replace("T", " ")
@@ -178,9 +172,9 @@ export default function EventSection() {
 
   return (
     <MainContainer>
-      {isLogin !== "false" ? (
+      {isLogin[0] !== "false" ? (
         <Wrapper>
-          <Title>Welcome, {isLogin}</Title>
+          <Title>Welcome, {isLogin[0] + ` from ` + isLogin[1]}</Title>
           {isDataLoaded ? (
             <div>
               <Description>Select your proejct and date range:</Description>

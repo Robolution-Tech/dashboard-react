@@ -17,7 +17,8 @@
 - [x] Contact us page
 - [x] Project/Product Demonstration page
 - [x] (Event filter) Company project tabs
-- [ ] (Event filter) Time interval selections
+- [x] (Event filter) Time interval selections
+- [ ] Handling 401 response
 - [ ] Customize BigTextLiiteText?
-- [ ] Add authentication in LoginSections.js
+- [x] Add authentication in LoginSections.js
 - [ ] Dark mode

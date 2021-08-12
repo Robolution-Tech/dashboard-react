@@ -8,7 +8,7 @@ export default function LoginButton(props) {
   const { title, subtitle } = props
   const { isLogin } = useContext(UserLoginContext)
   var dirPage = ""
-  if (isLogin !== "false") {
+  if (isLogin[0] !== "false") {
     dirPage = "/dashboard"
   } else {
     dirPage = "/signin"
