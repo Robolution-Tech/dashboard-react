@@ -117,7 +117,7 @@ export default function EventSection() {
   }, [isLogin, userToken])
 
   useEffect(() => {
-    if (projectData !== null) {
+    if (projectData !== null && typeof projectData !== "undefined") {
       if (
         typeof projectData[tabIndex] !== "undefined" &&
         dateRange[0] !== null &&

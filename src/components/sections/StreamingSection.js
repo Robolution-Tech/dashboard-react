@@ -12,7 +12,7 @@ const projectDescription = [
       description:
         "Device ID: <strong>Cam 1</strong><p> Project ID: Esso #795</p>",
       // url: "https://3927282f5050.us-west-2.playback.live-video.net/api/video/v1/us-west-2.892251806435.channel.ntymdhLALoOC.m3u8",
-      url: "http://us-or-cera-2.natfrp.cloud:17865/camera1_hls/stream.m3u8",
+      url: "https://streaming.robolution.ca:16868/camera1_hls/stream.m3u8",
     },
     geometry: {
       type: "Point",
@@ -25,7 +25,8 @@ const projectDescription = [
       description:
         "Device ID:<strong>Cam 2</strong><p>Project ID: Safeway #368</p>",
       // url: "https://3927282f5050.us-west-2.playback.live-video.net/api/video/v1/us-west-2.892251806435.channel.PfRwjOJoaWdI.m3u8",
-      url: "http://us-or-cera-2.natfrp.cloud:17865/hls/stream.m3u8",
+      // url: "http://us-or-cera-2.natfrp.cloud:17865/hls/stream.m3u8",
+      url: "https://streaming.robolution.ca:16868/hls/stream.m3u8",
     },
     geometry: {
       type: "Point",
