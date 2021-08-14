@@ -14,6 +14,7 @@ import "../styles/ReactTabs.css"
 import { RangeDatePicker } from "react-google-flight-datepicker"
 import "react-google-flight-datepicker/dist/main.css"
 import { UserTokenContext } from "../../context/UserTokenContext"
+import RefreshButton from "../buttons/RefreshButton"
 
 const formatTimeByOffset = (dateString, offset) => {
   // Params:
@@ -83,7 +84,7 @@ async function getData(url = "") {
 }
 
 export default function EventSection() {
-  const { videoChosen } = useContext(VideoContext)
+  const { videoChosen, setVideoChosen } = useContext(VideoContext)
   const { isLogin } = useContext(UserLoginContext)
   const { userToken } = useContext(UserTokenContext)
   const [projectData, setProjectData] = useState([])
@@ -95,6 +96,7 @@ export default function EventSection() {
   ])
   const [isDataLoaded, setIsDataLoaded] = useState(false)
   const [isRangeValid, setIsRangeValid] = useState(true)
+  const [refreshData, setRefreshData] = useState(true)
 
   // TODO: Parse company ID to query all project names
   // TODO: Add timestamps to query all events of interest
@@ -161,7 +163,7 @@ export default function EventSection() {
         })
       }
     }
-  }, [tabIndex, projectData, dateRange, isLogin, userToken])
+  }, [tabIndex, projectData, dateRange, isLogin, userToken, refreshData])
 
   // useEffect(() => {
   //   const startDate = dateRange[0].toISOString().slice(0, -1).replace("T", " ")
@@ -175,26 +177,43 @@ export default function EventSection() {
       {isLogin[0] !== "false" ? (
         <Wrapper>
           <Title>Welcome, {isLogin[0] + ` from ` + isLogin[1]}</Title>
+
           {isDataLoaded ? (
             <div>
               <Description>Select your proejct and date range:</Description>
-              <RangeDatePicker
-                onChange={(startDate, endDate) => {
-                  setDateRange([startDate, endDate])
-                }}
-                startDate={dateRange[0]}
-                endDate={dateRange[1]}
-                // minDate={new Date(1900, 0, 1)}
-                // maxDate={new Date(2100, 0, 1)}
-                // dateFormat="D"
-                // monthFormat="MMM YYYY"
-                startDatePlaceholder="Start Date"
-                endDatePlaceholder="End Date"
-                highlightToday="true"
-                // disabled={false}
-                // className="my-own-class-name"
-                // startWeekDay="monday"
-              />
+              <GridWrapper>
+                <RangeDatePicker
+                  onChange={(startDate, endDate) => {
+                    setDateRange([startDate, endDate])
+                  }}
+                  startDate={dateRange[0]}
+                  endDate={dateRange[1]}
+                  // minDate={new Date(1900, 0, 1)}
+                  // maxDate={new Date(2100, 0, 1)}
+                  // dateFormat="D"
+                  // monthFormat="MMM YYYY"
+                  startDatePlaceholder="Start Date"
+                  endDatePlaceholder="End Date"
+                  highlightToday="true"
+                  // disabled={false}
+                  // className="my-own-class-name"
+                  // startWeekDay="monday"
+                />
+                <div
+                  onClick={() => {
+                    setRefreshData(!refreshData)
+                    setVideoChosen("")
+                  }}
+                >
+                  <RefreshButton
+                  // onClick={() => {
+                  //   alert("dddddsa")
+                  //   setRefreshData(!refreshData)
+                  // }}
+                  />
+                </div>
+              </GridWrapper>
+
               <Tabs
                 selectedIndex={tabIndex}
                 onSelect={index => setTabIndex(index)}
@@ -353,4 +372,11 @@ const LoadingContainer = styled.div`
   box-shadow: 0px 50px 100px rgba(34, 79, 169, 0.3);
   backdrop-filter: blur(40px);
   border-radius: 20px;
+`
+
+const GridWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  gap: 10px;
+  /* grid-auto-rows: minmax(100px, auto); */
 `
