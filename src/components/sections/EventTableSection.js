@@ -200,10 +200,13 @@ export default function EventSection() {
                   // startWeekDay="monday"
                 />
                 <div
+                  role="button"
+                  tabIndex={0}
                   onClick={() => {
                     setRefreshData(!refreshData)
                     setVideoChosen("")
                   }}
+                  onKeyDown={() => {}}
                 >
                   <RefreshButton
                   // onClick={() => {

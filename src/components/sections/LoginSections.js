@@ -66,7 +66,7 @@ const Wrapper = styled.div`
 `
 
 const MainContainer = styled.div`
-  margin-top: 50px;
+  margin-top: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,7 +81,10 @@ const MainContainer = styled.div`
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 0.4rem;
-  @media only screen and (max-width: 320px) {
+  min-width: 40vw;
+  max-width: 80vw;
+  min-height: 70vh;
+  /* @media only screen and (max-width: 320px) {
     width: 80vw;
     height: 90vh;
     hr {
@@ -112,9 +115,9 @@ const MainContainer = styled.div`
     height: 50vh;
   }
   @media only screen and (min-width: 1280px) {
-    width: 30vw;
+    width: 50vw;
     height: 70vh;
-  }
+  } */
 `
 
 const WelcomeText = styled.h2`

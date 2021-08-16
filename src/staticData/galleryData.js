@@ -1,7 +1,7 @@
 const galleryData = [
   {
     title: "Plug-and-play autonomous solution",
-    img_url: "/images/pics/system/sensors.jpg",
+    img_url: "/images/pics/system/sensor_all.jpg",
     description:
       "With AI-powered LiDAR and computer vision technologies, our solution can upgrade these heavy machines to perform their respective construction tasks autonomously without modifying their existing mechanisms and can be deployed or uninstalled within minutes. ",
   },
