@@ -98,12 +98,6 @@ export default function EventSection() {
   const [isRangeValid, setIsRangeValid] = useState(true)
   const [refreshData, setRefreshData] = useState(true)
 
-  // TODO: Parse company ID to query all project names
-  // TODO: Add timestamps to query all events of interest
-  // TODO: change keller to variable
-  // TODO: Only fetch data for active tab? (Current way: fetch all events)
-  // Called when site mounted
-  // TODO: Add time filter
   useEffect(() => {
     getData(
       `https://fastapi.robolution.ca/event/` +
@@ -237,7 +231,7 @@ export default function EventSection() {
                           device_id={data.deviceId}
                           event_name={data.event_name}
                           event_value={data.event_value}
-                          event_date={formatTimeByOffset(data.time, 0).substr(
+                          event_date={formatTimeByOffset(data.time, -12).substr(
                             0,
                             16
                           )}

@@ -10,13 +10,13 @@ const projectDescription = [
     type: "Feature",
     properties: {
       description:
-        "Device ID: <strong>Cam 1</strong><p> Project ID: Esso #795</p>",
+        "Device ID: <strong>Cam 1</strong><p> Project ID: Keller Office</p>",
       // url: "https://3927282f5050.us-west-2.playback.live-video.net/api/video/v1/us-west-2.892251806435.channel.ntymdhLALoOC.m3u8",
-      url: "https://streaming.robolution.ca:16868/camera1_hls/stream.m3u8",
+      url: "https://3927282f5050.us-west-2.playback.live-video.net/api/video/v1/us-west-2.892251806435.channel.ntymdhLALoOC.m3u8",
     },
     geometry: {
       type: "Point",
-      coordinates: [-113.57925370852986, 53.31250072402259],
+      coordinates: [-113.598658, 53.563947],
     },
   },
   {

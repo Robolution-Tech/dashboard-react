@@ -26,8 +26,8 @@ const MapView = ({ projectCams }) => {
       const map = new mapboxgl.Map({
         container: mapContainer.current,
         style: "mapbox://styles/mapbox/streets-v11",
-        center: [-113.57925370852986, 53.31250072402259],
-        zoom: 15,
+        center: projectCams[0].geometry.coordinates,
+        zoom: 11,
       })
       map.on("load", () => {
         map.addSource("places", {
