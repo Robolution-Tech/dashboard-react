@@ -10,29 +10,29 @@ const projectDescription = [
     type: "Feature",
     properties: {
       description:
-        "Device ID: <strong>Cam 1</strong><p> Project ID: Keller Office</p>",
+        "Device ID: <strong>Cam 1</strong><p> Project ID: Whyte Ave.</p>",
       // url: "https://3927282f5050.us-west-2.playback.live-video.net/api/video/v1/us-west-2.892251806435.channel.ntymdhLALoOC.m3u8",
       url: "https://3927282f5050.us-west-2.playback.live-video.net/api/video/v1/us-west-2.892251806435.channel.ntymdhLALoOC.m3u8",
     },
     geometry: {
       type: "Point",
-      coordinates: [-113.598658, 53.563947],
+      coordinates: [-113.500935, 53.518615],
     },
   },
-  {
-    type: "Feature",
-    properties: {
-      description:
-        "Device ID:<strong>Cam 2</strong><p>Project ID: Safeway #368</p>",
-      // url: "https://3927282f5050.us-west-2.playback.live-video.net/api/video/v1/us-west-2.892251806435.channel.PfRwjOJoaWdI.m3u8",
-      // url: "http://us-or-cera-2.natfrp.cloud:17865/hls/stream.m3u8",
-      url: "https://streaming.robolution.ca:16868/hls/stream.m3u8",
-    },
-    geometry: {
-      type: "Point",
-      coordinates: [-113.58, 53.31],
-    },
-  },
+  // {
+  //   type: "Feature",
+  //   properties: {
+  //     description:
+  //       "Device ID:<strong>Cam 2</strong><p>Project ID: Safeway #368</p>",
+  //     // url: "https://3927282f5050.us-west-2.playback.live-video.net/api/video/v1/us-west-2.892251806435.channel.PfRwjOJoaWdI.m3u8",
+  //     // url: "http://us-or-cera-2.natfrp.cloud:17865/hls/stream.m3u8",
+  //     url: "https://streaming.robolution.ca:16868/hls/stream.m3u8",
+  //   },
+  //   geometry: {
+  //     type: "Point",
+  //     coordinates: [-113.58, 53.31],
+  //   },
+  // },
 ]
 
 export default function StreamingSection() {

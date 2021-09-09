@@ -2,6 +2,7 @@ import React, { useContext } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import { UserLoginContext } from "../../context/UserLoginContext"
+import { UserTokenContext } from "../../context/UserTokenContext"
 
 // const menuDataNoLogin = ["Home", "User Login", "About Us"]
 const menuDataNoLogin = [
@@ -39,8 +40,35 @@ const menuDataLogin = [
   { title: "Sign Out", icon: "/images/icons/account.svg", link: "/" },
 ]
 
+async function controlStream(
+  command = "off",
+  user,
+  token,
+  companyId,
+  projectId,
+  deviceId
+) {
+  const response = await fetch(
+    `https://fastapi.robolution.ca/site_monitor/streaming/stream_` +
+      command +
+      `/?companyId=` +
+      companyId +
+      `&projectId=` +
+      projectId +
+      `&deviceId=` +
+      deviceId +
+      `&token=` +
+      token +
+      `&user=` +
+      user,
+    { method: "POST", headers: { accept: "application/json" } }
+  )
+  return response.json()
+}
+
 export default function Header() {
   const { isLogin, setLogin } = useContext(UserLoginContext)
+  const { userToken } = useContext(UserTokenContext)
   var finalMenudata = menuDataNoLogin
   if (isLogin[0] !== "false") {
     finalMenudata = menuDataLogin
@@ -61,7 +89,17 @@ export default function Header() {
             <Link
               to={item.link}
               key={index}
-              onClick={() => setLogin(["false", " "])}
+              onClick={() => {
+                setLogin(["false", " "])
+                controlStream(
+                  "off",
+                  isLogin[0],
+                  userToken,
+                  isLogin[1],
+                  "all",
+                  "all"
+                )
+              }}
             >
               <MenuItem>
                 <img src={item.icon} alt={item.title} />
