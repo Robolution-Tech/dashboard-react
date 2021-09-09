@@ -22,3 +22,4 @@
 - [ ] Customize BigTextLiiteText?
 - [x] Add authentication in LoginSections.js
 - [ ] Dark mode
+- [ ] Add pagination for event
